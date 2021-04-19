@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://kb-at-zero.github.io/2021/04/18/hello-world/</loc>
+    <loc>https://kb-at-zero.github.io/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</loc>
     
-    <lastmod>2021-04-18</lastmod>
+    <lastmod>2021-04-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kb-at-zero.github.io/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/index.html</loc>
+    
+    <lastmod>2021-04-19</lastmod>
     
   </url>
   
 
   <url>
     <loc>https://kb-at-zero.github.io/</loc>
-    <lastmod>2021-04-18</lastmod>
+    <lastmod>2021-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

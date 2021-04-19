@@ -1,0 +1,552 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Web安全-信息收集 | KB-AT的博客</title><meta name="keywords" content="KB-AT 网络安全 渗透测试 Web安全 内网渗透"><meta name="author" content="AT"><meta name="copyright" content="AT"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="信息收集在平常的渗透测试的过程中，最重要也是最首要的一步就是信息收集，在这个阶段我们要尽可能的收集目标组织的信息，所谓“知己知彼、百战不殆”，我们越是了解目标，渗透起来就越容易。 收集域名信息 whois 查询 whois是一个标准的互联网协议，可用于收集网络注册信息，域名的注册、IP地址等信息。可以用于查询域名是否已被注册以及注册域名的详细信息的数据库（域名所有人、域名注册商等）。在whois">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web安全-信息收集">
+<meta property="og:url" content="https://kb-at-zero.github.io/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/index.html">
+<meta property="og:site_name" content="KB-AT的博客">
+<meta property="og:description" content="信息收集在平常的渗透测试的过程中，最重要也是最首要的一步就是信息收集，在这个阶段我们要尽可能的收集目标组织的信息，所谓“知己知彼、百战不殆”，我们越是了解目标，渗透起来就越容易。 收集域名信息 whois 查询 whois是一个标准的互联网协议，可用于收集网络注册信息，域名的注册、IP地址等信息。可以用于查询域名是否已被注册以及注册域名的详细信息的数据库（域名所有人、域名注册商等）。在whois">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-04-18T06:04:00.000Z">
+<meta property="article:modified_time" content="2021-04-19T13:31:49.156Z">
+<meta property="article:author" content="AT">
+<meta property="article:tag" content="KB-AT 网络安全 渗透测试 Web安全 内网渗透">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://kb-at-zero.github.io/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?https://hm.baidu.com/hm.js?ad9755e2bb4766b21a8ee011534e2a90";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-04-19 21:31:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="KB-AT的博客" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/touxiang.gif" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">KB-AT的博客</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Web安全-信息收集</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-04-18T06:04:00.000Z" title="发表于 2021-04-18 14:04:00">2021-04-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-04-19T13:31:49.156Z" title="更新于 2021-04-19 21:31:49">2021-04-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Web安全-信息收集"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><hr>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><p>在平常的渗透测试的过程中，最重要也是最首要的一步就是信息收集，在这个阶段我们要尽可能的收集目标组织的信息，所谓“知己知彼、百战不殆”，我们越是了解目标，渗透起来就越容易。</p>
+<h2 id="收集域名信息"><a href="#收集域名信息" class="headerlink" title="收集域名信息"></a>收集域名信息</h2><ul>
+<li>whois 查询<ul>
+<li>whois是一个标准的互联网协议，可用于收集网络注册信息，域名的注册、IP地址等信息。可以用于查询域名是否已被注册以及注册域名的详细信息的数据库（域名所有人、域名注册商等）。在whois查询中，得到注册人的姓名和邮箱可以用于后期通过搜索引擎、社交网站爆破字典等，一般的小站点域名的所有人往往就是管理员。</li>
+<li>kali系统下whois默认安装：whois example.domain<br><img src="/images/pasted-0.png" alt="upload successful"></li>
+<li>爱站工具网：<a target="_blank" rel="noopener" href="https://whois.aizhan.com/">https://whois.aizhan.com/</a></li>
+<li>站长之家：<a target="_blank" rel="noopener" href="https://whois.chinaz.com/">https://whois.chinaz.com</a></li>
+<li>VirusTotal：<a target="_blank" rel="noopener" href="https://www.virustotal.com/">https://www.virustotal.com/</a></li>
+</ul>
+</li>
+<li>备案信息查询<ul>
+<li>ICP备案查询网：<a target="_blank" rel="noopener" href="http://www.beianbeian.com/">http://www.beianbeian.com</a></li>
+<li>天眼查：<a target="_blank" rel="noopener" href="http://www.tianyancha.com/">http://www.tianyancha.com</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="收集敏感信息"><a href="#收集敏感信息" class="headerlink" title="收集敏感信息"></a>收集敏感信息</h2><ul>
+<li>Google搜索敏感信息<br><img src="/images/pasted-1.png" alt="upload successful"></li>
+<li>GitHub搜索敏感信息：寻找相关敏感信息，如数据库连接信息、邮箱密码、uc-key、阿里的osskey，有时还可以找到泄露的源代码等</li>
+<li>乌云等漏洞平台搜索历史漏洞信息</li>
+<li>云盘搜索：<a target="_blank" rel="noopener" href="https://www.chaonengsou.com/">https://www.chaonengsou.com/</a></li>
+</ul>
+<h2 id="子域名收集"><a href="#子域名收集" class="headerlink" title="子域名收集"></a>子域名收集</h2><ul>
+<li>oneforall：<a target="_blank" rel="noopener" href="https://github.com/shmilylty/OneForAll%EF%BC%88%E9%9C%80%E9%85%8D%E7%BD%AEapi%E6%8E%A5%E5%8F%A3%EF%BC%8C%E8%BF%90%E8%A1%8C%E6%97%B6%E7%BF%BB%E5%A2%99%E6%95%88%E6%9E%9C%E6%9C%80%E4%BD%B3%EF%BC%89">https://github.com/shmilylty/OneForAll（需配置api接口，运行时翻墙效果最佳）</a></li>
+<li>Layer子域名挖掘机：<a target="_blank" rel="noopener" href="https://www.webshell.cc/6384.html">https://www.webshell.cc/6384.html</a></li>
+<li>Sublist3r：<a target="_blank" rel="noopener" href="https://github.com/aboul3la/Sublist3r">https://github.com/aboul3la/Sublist3r</a></li>
+<li>subDomainBrute：<a target="_blank" rel="noopener" href="https://github.com/lijiejie/subDomainsBrute">https://github.com/lijiejie/subDomainsBrute</a></li>
+<li>在线子域名枚举：<a target="_blank" rel="noopener" href="https://phpinfo.me/domain/%E3%80%81https://dns.aizhan.com">https://phpinfo.me/domain/、https://dns.aizhan.com</a></li>
+<li>空间搜索引擎：fofa（证书、title、icon等）、shodan、钟馗之眼、傻蛋</li>
+<li>搜索引擎：Google、百度、bing等</li>
+<li>第三方聚合应用枚举：<a target="_blank" rel="noopener" href="https://dnsdumpster.com/">https://dnsdumpster.com</a></li>
+</ul>
+<h2 id="常用端口信息"><a href="#常用端口信息" class="headerlink" title="常用端口信息"></a>常用端口信息</h2><ul>
+<li>Nmap</li>
+<li>御剑高速TCP端口扫描</li>
+<li>Masscan</li>
+<li>ZMap</li>
+<li>Goby</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>服务</th>
+<th>入侵方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>ftp/tftp/vsftpd文件传输协议</td>
+<td>爆破/嗅探/溢出/后门/下载</td>
+</tr>
+<tr>
+<td>22</td>
+<td>ssh远程连接</td>
+<td>爆破/openssh漏洞</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Telnet远程连接</td>
+<td>爆破/嗅探/弱口令</td>
+</tr>
+<tr>
+<td>25</td>
+<td>SMTP邮件服务</td>
+<td>邮件伪造</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS域名解析系统</td>
+<td>域传送/劫持/缓存投毒/欺骗</td>
+</tr>
+<tr>
+<td>67/68</td>
+<td>dhcp服务</td>
+<td>劫持/欺骗</td>
+</tr>
+<tr>
+<td>110</td>
+<td>pop3</td>
+<td>爆破/嗅探</td>
+</tr>
+<tr>
+<td>139</td>
+<td>Samba服务</td>
+<td>爆破/未授权访问/远程命令执行</td>
+</tr>
+<tr>
+<td>143</td>
+<td>Imap协议</td>
+<td>爆破</td>
+</tr>
+<tr>
+<td>161</td>
+<td>SNMP协议</td>
+<td>爆破/搜集目标内网信息</td>
+</tr>
+<tr>
+<td>389</td>
+<td>Ldap目录访问协议</td>
+<td>注入/未授权访问/弱口令</td>
+</tr>
+<tr>
+<td>445</td>
+<td>smb</td>
+<td>ms17-010/端口溢出</td>
+</tr>
+<tr>
+<td>512/513/514</td>
+<td>Linux Rexec服务</td>
+<td>爆破/Rlogin登陆</td>
+</tr>
+<tr>
+<td>873</td>
+<td>Rsync服务</td>
+<td>文件上传/未授权访问</td>
+</tr>
+<tr>
+<td>1080</td>
+<td>socket</td>
+<td>爆破</td>
+</tr>
+<tr>
+<td>1352</td>
+<td>Lotus domino邮件服务</td>
+<td>爆破/信息泄漏</td>
+</tr>
+<tr>
+<td>1433</td>
+<td>mssql</td>
+<td>爆破/注入/SA弱口令</td>
+</tr>
+<tr>
+<td>1521</td>
+<td>oracle</td>
+<td>爆破/注入/TNS爆破/反弹shell</td>
+</tr>
+<tr>
+<td>2049</td>
+<td>Nfs服务</td>
+<td>配置不当</td>
+</tr>
+<tr>
+<td>2181</td>
+<td>zookeeper服务</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>2375</td>
+<td>docker remote api</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>3306</td>
+<td>mysql</td>
+<td>爆破/注入</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>Rdp远程桌面链接</td>
+<td>爆破/shift后门</td>
+</tr>
+<tr>
+<td>4848</td>
+<td>GlassFish控制台</td>
+<td>爆破/认证绕过</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>sybase/DB2数据库</td>
+<td>爆破/注入/提权</td>
+</tr>
+<tr>
+<td>5432</td>
+<td>postgresql</td>
+<td>爆破/注入/缓冲区溢出</td>
+</tr>
+<tr>
+<td>5632</td>
+<td>pcanywhere服务</td>
+<td>抓密码/代码执行</td>
+</tr>
+<tr>
+<td>5900</td>
+<td>vnc</td>
+<td>爆破/认证绕过</td>
+</tr>
+<tr>
+<td>6379</td>
+<td>Redis数据库</td>
+<td>未授权访问/爆破</td>
+</tr>
+<tr>
+<td>7001/7002</td>
+<td>weblogic</td>
+<td>java反序列化/控制台弱口令</td>
+</tr>
+<tr>
+<td>80/443</td>
+<td>http/https</td>
+<td>web应用漏洞/心脏滴血</td>
+</tr>
+<tr>
+<td>8069</td>
+<td>zabbix服务</td>
+<td>远程命令执行/注入</td>
+</tr>
+<tr>
+<td>8161</td>
+<td>activemq</td>
+<td>弱口令/写文件</td>
+</tr>
+<tr>
+<td>8080/8089</td>
+<td>Jboss/Tomcat/Resin</td>
+<td>爆破/PUT文件上传/反序列化</td>
+</tr>
+<tr>
+<td>8083/8086</td>
+<td>influxDB</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>9000</td>
+<td>fastcgi</td>
+<td>远程命令执行</td>
+</tr>
+<tr>
+<td>9090</td>
+<td>Websphere控制台</td>
+<td>爆破/java反序列化/弱口令</td>
+</tr>
+<tr>
+<td>9200/9300</td>
+<td>elasticsearch</td>
+<td>远程代码执行</td>
+</tr>
+<tr>
+<td>11211</td>
+<td>memcached</td>
+<td>未授权访问</td>
+</tr>
+<tr>
+<td>27017/27018</td>
+<td>mongodb</td>
+<td>未授权访问/爆破</td>
+</tr>
+</tbody></table>
+<ul>
+<li>web服务类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">tomcat--80&#x2F;8080&#x2F;8009</span><br><span class="line">                     manager弱口令</span><br><span class="line">                     put上传webshell</span><br><span class="line">                     HTTP慢速攻击</span><br><span class="line">                     ajr文件包含漏洞-CVE-2020-1938</span><br><span class="line">        Jboss--8080</span><br><span class="line">                     后台弱口令</span><br><span class="line">                     console后台部署war包</span><br><span class="line">                     JAVA反序列化</span><br><span class="line">                     远程代码执行</span><br><span class="line">        webSphere--9080</span><br><span class="line">                     后台弱口令</span><br><span class="line">                     任意文件泄露</span><br><span class="line">                     JAVA反序列化</span><br><span class="line">        weblogic--7001&#x2F;7002</span><br><span class="line">                     后台弱口令</span><br><span class="line">                     console后台部署war包</span><br><span class="line">                     SSRF</span><br><span class="line">                     测试页面上传webshell</span><br><span class="line">                             JAVA反序列化</span><br><span class="line">                                 CVE-2018-2628</span><br><span class="line">                                 CVE-2018-2893</span><br><span class="line">                                 CVE-2017-10271</span><br><span class="line">                                 CVE-2019-2725</span><br><span class="line">                                 CVE-2019-2729</span><br><span class="line">        Glassfish--8080&#x2F;4848</span><br><span class="line">                     暴力破解</span><br><span class="line">                     任意文件读取</span><br><span class="line">                     认证绕过</span><br><span class="line">        Jetty--8080</span><br><span class="line">                     远程共享缓冲区溢出</span><br><span class="line">        Apache--80&#x2F;8080</span><br><span class="line">                     HTTP慢速攻击</span><br><span class="line">                     解析漏洞</span><br><span class="line">                     目录遍历</span><br><span class="line">        ApacheSolr--8983</span><br><span class="line">                     远程命令执行</span><br><span class="line">                     CVE-2017-12629</span><br><span class="line">                     CVE-2019-0193</span><br><span class="line">         IIS--80</span><br><span class="line">                     put上传webshell</span><br><span class="line">                     IIS解析漏洞</span><br><span class="line">                     IIS提权</span><br><span class="line">                     IIS远程远程代码执行-CVE-2017-7269</span><br><span class="line">         Resin--8080</span><br><span class="line">                     目录遍历</span><br><span class="line">                     远程文件读取</span><br><span class="line">         Axis2--8080</span><br><span class="line">                     后台弱口令</span><br><span class="line">         Lutos--1352</span><br><span class="line">                     后台弱口令</span><br><span class="line">                     信息泄露</span><br><span class="line">                     跨站脚本攻击</span><br><span class="line">         Nginx--80&#x2F;443</span><br><span class="line">                     HTTP慢速攻击</span><br><span class="line">                     解析漏洞</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数据库类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Mysql--3306</span><br><span class="line">                            弱口令</span><br><span class="line">                            身份认证漏洞-cve-2012-2122</span><br><span class="line">                            拒绝服务攻击</span><br><span class="line">                            phpmyadmin万能密码or弱口令</span><br><span class="line">                            UDF&#x2F;MOF提权</span><br><span class="line">                Mssql--1433</span><br><span class="line">                            弱口令</span><br><span class="line">                            存储过程提权</span><br><span class="line">                Oralce--1521</span><br><span class="line">                            弱口令</span><br><span class="line">                            TNS漏洞</span><br><span class="line">                Redis--6379</span><br><span class="line">                            弱口令</span><br><span class="line">                            未经授权访问</span><br><span class="line">                PostgreSQL--5432</span><br><span class="line">                            弱口令</span><br><span class="line">                            缓冲区溢出-cve-2014-2669</span><br><span class="line">                MongoDB--27001</span><br><span class="line">                            弱口令</span><br><span class="line">                            未经授权访问</span><br><span class="line">                DB2--5000</span><br><span class="line">                            安全限制绕过进行未经授权操作-cve-2015-1922</span><br><span class="line">                SysBase--5000&#x2F;4100</span><br><span class="line">                            弱口令</span><br><span class="line">                            命令注入</span><br><span class="line">                Memcache--11211</span><br><span class="line">                            未经授权访问</span><br><span class="line">                            配置漏洞</span><br><span class="line">                ElasticSearch--9200&#x2F;9300</span><br><span class="line">                            未经授权访问</span><br><span class="line">                            远程代码执行</span><br><span class="line">                            文件办理</span><br><span class="line">                            写入webshell</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>大数据类</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Hadoop--50010</span><br><span class="line">                            远程命令执行</span><br><span class="line">                Zookeeper--2181</span><br><span class="line">                            未经授权访问</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>文件共享</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Ftp--21</span><br><span class="line">                            弱口令</span><br><span class="line">                            匿名访问</span><br><span class="line">                            上传后门</span><br><span class="line">                            远程溢出</span><br><span class="line">                            跳转攻击</span><br><span class="line">                NFS--2049</span><br><span class="line">                            未经授权访问</span><br><span class="line">                Samba--137</span><br><span class="line">                            弱口令</span><br><span class="line">                            未经授权访问</span><br><span class="line">                            远程代码执行-CVE-2015-0240</span><br><span class="line">                LDAP--389</span><br><span class="line">                            弱口令</span><br><span class="line">                            注入</span><br><span class="line">                            未经授权访问</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>远程访问</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">SSH--22</span><br><span class="line">             弱口令</span><br><span class="line">             28退格漏洞</span><br><span class="line">             OpenSSL漏洞</span><br><span class="line">             用户名枚举</span><br><span class="line">Telent--23</span><br><span class="line">             弱口令</span><br><span class="line">RDP--3389</span><br><span class="line">             弱口令</span><br><span class="line">             Shitf粘滞键后门</span><br><span class="line">             缓冲区溢出</span><br><span class="line">             MS12-020</span><br><span class="line">             CVE-2019-0708</span><br><span class="line"> VNC--5901</span><br><span class="line">             弱口令</span><br><span class="line">             认证口令绕过</span><br><span class="line">             拒绝服务攻击-CVE-2015-5239</span><br><span class="line">             权限提升-CVE-2013-6886</span><br><span class="line"> Pcanywhere--5632</span><br><span class="line">             拒绝服务攻击</span><br><span class="line">             权限提升</span><br><span class="line">             代码执行</span><br><span class="line"> X11--6000</span><br><span class="line">             未经授权访问-CVE-1999-0526</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>邮件服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SMTP--25&#x2F;465</span><br><span class="line">             弱口令</span><br><span class="line">             未经授权访问</span><br><span class="line">             邮件伪造</span><br><span class="line">POP3--110&#x2F;995</span><br><span class="line">             弱口令</span><br><span class="line">             未经授权访问</span><br><span class="line">IMAP--143&#x2F;993</span><br><span class="line">             弱口令</span><br><span class="line">             任意文件读取</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>其他服务</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">DNS--53</span><br><span class="line">             DNS区域传输</span><br><span class="line">             DNS劫持</span><br><span class="line">             DNS欺骗</span><br><span class="line">             DNS缓存投毒</span><br><span class="line">             DNS隧道</span><br><span class="line">DHCP--67&#x2F;68</span><br><span class="line">             DHCP劫持</span><br><span class="line">             DHCP欺骗</span><br><span class="line">SNMP--161</span><br><span class="line">             弱口令</span><br><span class="line">Rlogin--512&#x2F;513&#x2F;514</span><br><span class="line">             rlogin登录</span><br><span class="line">Rsync--873</span><br><span class="line">             未经授权访问</span><br><span class="line">             本地权限提升</span><br><span class="line">Zabbix--8069</span><br><span class="line">             远程命令执行</span><br><span class="line">RMI--1090&#x2F;1099</span><br><span class="line">             JAVA反序列化</span><br><span class="line">Docker--2375</span><br><span class="line">             未经授权访问</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h2><p>在web渗透过程中，Web指纹识别是信息收集环节中一个比较重要的步骤，通过一些开源的工具、平台或者手工检测CMS系统是公开的CMS程序还是二次开发至关重要，能准确的获取CMS类型、Web服务组件类型及版本信息可以帮助安全工程师快速有效的去验证已知漏洞。对目标渗透测试过程中，目标的cms是十分重要的信息，有了目标的cms，就可以利用相关bug进行测试，进行代码审计等。</p>
+<ul>
+<li>在指纹识别的学习过程中，有很多开源的工具和指纹库，如fofa、WhatWeb、w11scan、WebEye、御剑Web指纹识别、WebRobo、椰树、轻量web指纹识别</li>
+<li>在线网站查询：<ul>
+<li>BugScaner：<a target="_blank" rel="noopener" href="http://whatweb.bugscaner.com/look/">http://whatweb.bugscaner.com/look/</a></li>
+<li>云悉指纹：<a target="_blank" rel="noopener" href="http://www.yunsee.cn/finger.html">http://www.yunsee.cn/finger.html</a></li>
+<li>WhatWeb：<a target="_blank" rel="noopener" href="https://whatweb.net/">https://whatweb.net</a></li>
+<li>Wapplyzer插件</li>
+</ul>
+</li>
+<li>识别方式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>识别方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>网站特有文件：如/templets/default/style/dedecms.css—dedecms</td>
+</tr>
+<tr>
+<td>网站独有文件的md5：如favicon.ico，但是该文件可以被修改导致不准确。</td>
+</tr>
+<tr>
+<td>网站文件命名规则</td>
+</tr>
+<tr>
+<td>返回头的关键字</td>
+</tr>
+<tr>
+<td>网页关键字：如/data/sessions/index.html——dedecms</td>
+</tr>
+<tr>
+<td>Url特征</td>
+</tr>
+<tr>
+<td>Meta特征</td>
+</tr>
+<tr>
+<td>Script特征</td>
+</tr>
+<tr>
+<td>robots.txt</td>
+</tr>
+<tr>
+<td>网站路径特征</td>
+</tr>
+<tr>
+<td>网站静态资源</td>
+</tr>
+<tr>
+<td>爬虫网站目录信息</td>
+</tr>
+</tbody></table>
+<h2 id="查找真实IP"><a href="#查找真实IP" class="headerlink" title="查找真实IP"></a>查找真实IP</h2><p>对应给定的目标，例如一个网站，首先获得的是目标域名，下一步就是找到域名背后的服务器ip，由于当前网站大多使用CDN（内容分发网络）对网站访问流量进行分流和一定程度的攻击防护，所以找出CDN背后的服务器真实ip就是一种“刚需”了。</p>
+<ul>
+<li>验证是否有CDN<ul>
+<li>ping和nslookup（解析对应多个 IP 地址）</li>
+<li>多地 ping 服务（IP 地址不唯一）：<ul>
+<li><a target="_blank" rel="noopener" href="http://ping.chinaz.com/">http://ping.chinaz.com/</a></li>
+<li><a target="_blank" rel="noopener" href="http://ping.aizhan.com/">http://ping.aizhan.com/</a></li>
+<li><a target="_blank" rel="noopener" href="http://ce.cloud.360.cn/">http://ce.cloud.360.cn/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绕过 CDN 查找网站真实 IP<ul>
+<li>查询历史DNS记录<ul>
+<li>1、查看 IP 与 域名绑定的历史记录，可能会存在使用 CDN 前的记录，相关查询网站有：<ul>
+<li><a target="_blank" rel="noopener" href="https://dnsdb.io/zh-cn/">https://dnsdb.io/zh-cn/</a> ###DNS查询</li>
+<li><a target="_blank" rel="noopener" href="https://x.threatbook.cn/">https://x.threatbook.cn/</a> ###微步在线</li>
+<li><a target="_blank" rel="noopener" href="http://toolbar.netcraft.com/site_report?url=">http://toolbar.netcraft.com/site_report?url=</a> ###在线域名信息查询</li>
+<li><a target="_blank" rel="noopener" href="http://viewdns.info/">http://viewdns.info/</a> ###DNS、IP等查询</li>
+<li><a target="_blank" rel="noopener" href="https://tools.ipip.net/cdn.php">https://tools.ipip.net/cdn.php</a> ###CDN查询IP</li>
+</ul>
+</li>
+<li>2、利用SecurityTrails（<a target="_blank" rel="noopener" href="https://securitytrails.com/%EF%BC%89%E5%B9%B3%E5%8F%B0%EF%BC%8C%E6%94%BB%E5%87%BB%E8%80%85%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%B2%BE%E5%87%86%E7%9A%84%E6%89%BE%E5%88%B0%E7%9C%9F%E5%AE%9E%E5%8E%9F%E5%A7%8BIP%E3%80%82%E4%BB%96%E4%BB%AC%E5%8F%AA%E9%9C%80%E5%9C%A8%E6%90%9C%E7%B4%A2%E5%AD%97%E6%AE%B5%E4%B8%AD%E8%BE%93%E5%85%A5%E7%BD%91%E7%AB%99%E5%9F%9F%E5%90%8D%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8C%89Enter%E9%94%AE%E5%8D%B3%E5%8F%AF%EF%BC%8C%E8%BF%99%E6%97%B6%E2%80%9C%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE%E2%80%9D%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%9C%A8%E5%B7%A6%E4%BE%A7%E7%9A%84%E8%8F%9C%E5%8D%95%E4%B8%AD%E6%89%BE%E5%88%B0%E3%80%82">https://securitytrails.com/）平台，攻击者就可以精准的找到真实原始IP。他们只需在搜索字段中输入网站域名，然后按Enter键即可，这时“历史数据”就可以在左侧的菜单中找到。</a></li>
+</ul>
+</li>
+<li>查询子域名：毕竟 CDN 还是不便宜的，所以很多站长可能只会对主站或者流量大的子站点做了 CDN，而很多小站子站点又跟主站在同一台服务器或者同一个C段内，此时就可以通过查询子域名对应的 IP 来辅助查找网站的真实IP。常用查找子域名方法有：微步在线(<a target="_blank" rel="noopener" href="https://x.threatbook.cn/)%E3%80%81Dnsdb%E6%9F%A5%E8%AF%A2%E6%B3%95%E3%80%82(https://dnsdb.io/zh-cn/)%E3%80%81Google">https://x.threatbook.cn/)、Dnsdb查询法。(https://dnsdb.io/zh-cn/)、Google</a> 搜索（Google site:baidu.com -www就能查看除www外的子域名）、各种子域名扫描器。</li>
+<li>搜索引擎：常见的有以前的钟馗之眼，shodan，fofa搜索。以fofa为例，只需输入：title:“网站的title关键字”或者body：“网站的body特征”就可以找出fofa收录的有这些关键字的ip域名，很多时候能获取网站的真实ip。</li>
+<li>利用SSL证书寻找真实原始IP：对于目标网站的SSL证书，要查找其使用的IPv4主机，只需将”SHA1 fingerprint”（签名证书的sha1值）粘贴到Censys IPv4主机搜索中，即可找到证书，使用此方法可以轻松找到配置错误的Web服务器。</li>
+<li>利用HTTP标头寻找真实原始IP：借助SecurityTrails这样的平台，任何人都可以在茫茫的大数据搜索到自己的目标，甚至可以通过比较HTTP标头来查找到原始服务器。</li>
+<li>利用网站返回的内容寻找真实原始IP：如果原始服务器IP也返回了网站的内容，那么可以在网上搜索大量的相关数据。浏览网站源代码，寻找独特的代码片段。在JavaScript中使用具有访问或标识符参数的第三方服务（例如Google Analytics，reCAPTCHA）是攻击者经常使用的方法。</li>
+<li>使用国外主机解析域名。</li>
+<li>国内很多 CDN 厂商因为各种原因只做了国内的线路，而针对国外的线路可能几乎没有，此时我们使用国外的主机直接访问可能就能获取到真实IP。</li>
+<li>网站漏洞查找：<ul>
+<li>1、目标敏感文件泄露，例如：phpinfo之类的探针、GitHub信息泄露等。</li>
+<li>2、XSS盲打，命令执行反弹shell，SSRF等。</li>
+<li>3、无论是用社工还是其他手段，拿到了目标网站管理员在CDN的账号，从而在从CDN的配置中找到网站的真实IP。</li>
+</ul>
+</li>
+<li>网站邮件订阅查找：RSS邮件订阅，很多网站都自带 sendmail，会发邮件给我们，此时查看邮件源码里面就会包含服务器的真实 IP 了。</li>
+<li>用 Zmap 扫全网：需要找 xiaix.me 网站的真实 IP，我们首先从 apnic 获取 IP 段，然后使用 Zmap 的 banner-grab 扫描出来 80 端口开放的主机进行 banner 抓取，最后在 http-req 中的 Host 写 xiaix.me。</li>
+<li>F5 LTM解码法：当服务器使用F5 LTM做负载均衡时，通过对set-cookie关键字的解码真实ip也可被获取，例如：Set-Cookie: BIGipServerpool_8.29_8030=487098378.24095.0000，先把第一小节的十进制数即487098378取出来，然后将其转为十六进制数1d08880a，接着从后至前，以此取四位数出来，也就是0a.88.08.1d，最后依次把他们转为十进制数10.136.8.29，也就是最后的真实ip。</li>
+</ul>
+</li>
+</ul>
+<h2 id="目录扫描"><a href="#目录扫描" class="headerlink" title="目录扫描"></a>目录扫描</h2><p>网站目录和敏感文件扫描是网站测试中最基本的手段之一。如果通过该方法发现了网站后台，可以尝试暴库、SQL注入等方式进行安全测试；如果发现敏感目录或敏感文件，能帮我们获取如php环境变量、robots.txt、网站指纹等信息；如果扫描出了一些上传的文件，我们甚至可能通过上传功能（一句话恶意代码）获取网站的权限。</p>
+<ul>
+<li>目录扫描原理：通过请求返回的信息来判断当前目录或文件是否真实存在。网站后台扫描工具都是利用目录字典进行爆破扫描，字典越多，扫描到的结果也越多。</li>
+<li>工具：<ul>
+<li>dirsearch：<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></li>
+<li>yjdirscan（御剑目录扫描专业版）：<a target="_blank" rel="noopener" href="https://github.com/foryujian/yjdirscan">https://github.com/foryujian/yjdirscan</a></li>
+<li>7kbscan-WebPathBrute：<a target="_blank" rel="noopener" href="https://github.com/7kbstorm/7kbscan-WebPathBrute">https://github.com/7kbstorm/7kbscan-WebPathBrute</a></li>
+<li>Dirmap：<a target="_blank" rel="noopener" href="https://github.com/H4ckForJob/dirmap">https://github.com/H4ckForJob/dirmap</a></li>
+<li>DirBuster：Kali Linux提供的目录扫描工具</li>
+<li>webdirscan：<a target="_blank" rel="noopener" href="https://github.com/TuuuNya/webdirscan">https://github.com/TuuuNya/webdirscan</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h2><ul>
+<li>社工库</li>
+<li>邮件钓鱼</li>
+<li>客服</li>
+<li>构造字典</li>
+<li>…..</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">AT</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://kb-at-zero.github.io/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">https://kb-at-zero.github.io/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://kb-at-zero.github.io" target="_blank">KB-AT的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/touxiang.gif" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">AT</div><div class="author-info__description">网络安全 | 渗透测试 | Web安全 ｜ 内网渗透</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/kb-at-zero"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">记录、学习、分享、成长</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.</span> <span class="toc-text">信息收集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E5%9F%9F%E5%90%8D%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text">收集域名信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">收集敏感信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E5%9F%9F%E5%90%8D%E6%94%B6%E9%9B%86"><span class="toc-number">1.3.</span> <span class="toc-text">子域名收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.</span> <span class="toc-text">常用端口信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB"><span class="toc-number">1.5.</span> <span class="toc-text">指纹识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E7%9C%9F%E5%AE%9EIP"><span class="toc-number">1.6.</span> <span class="toc-text">查找真实IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%89%AB%E6%8F%8F"><span class="toc-number">1.7.</span> <span class="toc-text">目录扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6"><span class="toc-number">1.8.</span> <span class="toc-text">社会工程学</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="Web安全-信息收集"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web安全-信息收集"/></a><div class="content"><a class="title" href="/2021/04/18/Web%E5%AE%89%E5%85%A8-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" title="Web安全-信息收集">Web安全-信息收集</a><time datetime="2021-04-18T06:04:00.000Z" title="发表于 2021-04-18 14:04:00">2021-04-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By AT</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
