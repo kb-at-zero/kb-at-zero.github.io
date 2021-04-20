@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kb-at-zero.github.io/2018/09/01/%E6%97%A0%E7%BA%BF%E7%A0%B4%E8%A7%A3-netkeeper%E6%8B%A8%E5%8F%B7/</loc>
+    
+    <lastmod>2021-04-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kb-at-zero.github.io/2021/04/20/Web%E5%AE%89%E5%85%A8-Mysql%E6%B3%A8%E5%85%A5/</loc>
+    
+    <lastmod>2021-04-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kb-at-zero.github.io/link/index.html</loc>
     
     <lastmod>2021-04-20</lastmod>
@@ -10,13 +24,6 @@
   
   <url>
     <loc>https://kb-at-zero.github.io/about/index.html</loc>
-    
-    <lastmod>2021-04-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kb-at-zero.github.io/2021/04/20/Web%E5%AE%89%E5%85%A8-Mysql%E6%B3%A8%E5%85%A5/</loc>
     
     <lastmod>2021-04-20</lastmod>
     
@@ -73,10 +80,38 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://kb-at-zero.github.io/tags/netkeeper/</loc>
+    <lastmod>2021-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kb-at-zero.github.io/tags/%E6%97%A0%E7%BA%BF%E7%A0%B4%E8%A7%A3/</loc>
+    <lastmod>2021-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://kb-at-zero.github.io/categories/Web%E5%AE%89%E5%85%A8/</loc>
+    <lastmod>2021-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kb-at-zero.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/</loc>
+    <lastmod>2021-04-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kb-at-zero.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/WIFI/</loc>
     <lastmod>2021-04-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
