@@ -75,7 +75,7 @@
     <link href="https://kb-at-zero.github.io/2018/09/01/%E6%97%A0%E7%BA%BF%E7%A0%B4%E8%A7%A3-netkeeper%E6%8B%A8%E5%8F%B7/"/>
     <id>https://kb-at-zero.github.io/2018/09/01/%E6%97%A0%E7%BA%BF%E7%A0%B4%E8%A7%A3-netkeeper%E6%8B%A8%E5%8F%B7/</id>
     <published>2018-09-01T06:04:00.000Z</published>
-    <updated>2021-04-20T13:07:19.311Z</updated>
+    <updated>2021-04-20T13:15:14.492Z</updated>
     
     <content type="html"><![CDATA[<h1 id="斐讯k2拨号开无线"><a href="#斐讯k2拨号开无线" class="headerlink" title="斐讯k2拨号开无线"></a>斐讯k2拨号开无线</h1><ul><li><p>1、刷breed 详细教程见文件<a href="https://github.com/kb-at-zero/netkeeper-breed/releases/download/1.0/K2.breed.doc">斐讯K2刷breed教程</a>。</p></li><li><p>2、k2拔掉电源后长按复位键不松手并插上电源线等待连续多个白灯同时迅速闪烁几次后再松手。</p></li><li><p>3、必须用网线连接电脑和路由器，浏览器输入192.168.1.1，进入breed界面。</p></li><li><p>4、依次点击：固件更新，勾选固件选项好自动重启，点击选择文件，选择固件，点击开始刷新并确认。</p></li><li><p>5、等待刷机完成后路由自动重启。</p></li><li><p>6、重启完成后浏览器输入192.168.1.1进入固件设置界面，登录默认用户名root，密码admin，登录以后将浏览器最小化等待后续使用。</p></li><li><p>7、打开winscp.exe，File protocol选择SCP，Host name输入192.168.1.1，User name输入root，Password输入admin，点击Login登录，出现Warning提示窗口点击Update即可进入。</p></li><li><p>8、此时界面左边文件栏是本地的，右边是路由器的，左边定位到教程和相关文件所在文件夹，右边多次点击..返回根目录，依次点击路径usr-lib-pppd-2.4.7，将左边栏目里shandongmobile_sxplugin.so拖动到右边并右击选择Properties（属性），出来的界面中将输入框里面默认的0644改成0755并确定保存。</p></li><li><p>9、右边多次点击..返回路由器根目录，双击打开tmp文件夹，左边右击confnetwork.sh选择Edit，在出来的界面将账号，密码填写完并保存，然后将此文件拖动到右边tmp文件夹内。</p></li><li><p>10、打开指令.txt，找到winscp界面靠近左上角一个黑色命令行按钮，点击打开，将指令.txt里面的上下两个指令（chmod a+x /tmp/confnetwork.sh&nbsp;&nbsp;&nbsp;&nbsp; sh /tmp/confnetwork.sh）依次复制粘贴到输入框里面并点击Execute，每输入一个指令都点击一下Execute，两个指令顺序千万不能反，第二指令如果弹窗出现任何信息都重新点击Execute操作，第二指令正常操作应该是光标变成沙漏样式好几秒以后恢复正常。</p></li><li><p>11、打开步骤6的浏览器，点击左边栏目系统-重启，点击执行重启，路由器重启完成会重新出现设置界面登录的信息，登录以后点击系统-系统，点击两次蓝色方框的同步浏览器时间按钮，每次都是等待时间变化后再点击一次等待显示时间和电脑时间相同时再立即插上网线，此时就可以正常上网了。</p></li><li><p>12、每次给路由器断电后必须拔掉网线，然后再通电开机，手机或电脑连接路由后登录设置界面并点击系统-系统，点击同步浏览器时间，然后立即插上网线开始上网。</p></li></ul><h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h1><p><strong>1、网线直到教程结束前都不要插上路由器，否则完全无法成功且必须重新操作一遍教程步骤。</strong></p><p><strong>2、一旦路由出现任何问题无法上网时必须将教程除了刷breed以外再次完整操作一遍，否则无法上网</strong>。</p><p><strong>3、breed中备份固件功能请勿使用，备份出来的netkeeper网配置好的固件刷进去依旧会造成无法拨号上网的情况并需要重新将教程操作一遍</strong>。</p><p><strong>4、如果步骤7提示被拒绝，就浏览器输入192.168.1.1登录设置界面，点击系统-管理权，设置新密码然后再回到winscp改成对应密码再登录。</strong></p><p><strong>5、步骤11点击两次同步时间是点一次就连网线有小几率会出现后续配置完全失败得重新操作的情况。</strong></p><p><strong>特别注意：本文章只供学习用途。</strong></p><p>附上全部教程与文件（<a href="https://github.com/kb-at-zero/netkeeper-breed/releases/download/1.0/default1.zip">第一部分</a>&nbsp; <a href="https://github.com/kb-at-zero/netkeeper-breed/releases/download/1.0/default2.zip">第二部分</a>）</p>]]></content>
     
@@ -90,7 +90,7 @@
     
     <category term="路由器" scheme="https://kb-at-zero.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
     
-    <category term="WIFI" scheme="https://kb-at-zero.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/WIFI/"/>
+    <category term="无线WIFI" scheme="https://kb-at-zero.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/%E6%97%A0%E7%BA%BFWIFI/"/>
     
     
     <category term="netkeeper" scheme="https://kb-at-zero.github.io/tags/netkeeper/"/>
