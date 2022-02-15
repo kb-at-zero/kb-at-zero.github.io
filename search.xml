@@ -134,16 +134,14 @@
       
       <categories>
           
-          <category> 反序列化 </category>
+          <category> shiro </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> shiro </tag>
-            
-            <tag> idea </tag>
+            <tag> 反序列化 </tag>
             
         </tags>
       
